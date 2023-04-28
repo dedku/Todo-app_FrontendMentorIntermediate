@@ -1,5 +1,5 @@
 import express, { Router } from 'express'
-import { getAllTasks, createTask, getTask, updateTask, deleteTask } from '../controllers/tasks'
+import { getAllTasks, createTask, getTask, updateTask, deleteTask } from '../controllers/tasks.ts'
 
 const tasks: Router = express.Router()
 

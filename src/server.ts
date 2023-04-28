@@ -1,4 +1,5 @@
 import express, { Express, Request, Response } from 'express'
+import connectDB from './db/connect.ts'
 import tasks from './routes/tasks.ts'
 
 const app: Express = express()
@@ -11,6 +12,15 @@ app.get('/', (_: Request, res: Response) => {
 
 app.use('/api/v1/tasks', tasks)
 
-app.listen(port, () => {
-    console.log(`Server is listening on Port ${port}`)
-})
+const start = async () => {
+    try {
+        await connectDB()
+        app.listen(port, () => {
+            console.log(`Server is listening on Port ${port}`)
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+start()
