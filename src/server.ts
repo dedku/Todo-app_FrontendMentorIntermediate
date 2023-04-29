@@ -10,6 +10,7 @@ app.get('/', (_: Request, res: Response) => {
     res.status(200).send("Hellow word")
 })
 
+app.use(express.json())
 app.use('/api/v1/tasks', tasks)
 
 const start = async () => {
